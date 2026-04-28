@@ -3,8 +3,11 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const logger = require('morgan');
-
+const sequelize = require('./config/database');
+const Donacion = require('./models/Donacion');
 const app = express();
+const donacionesRoutes = require('./routes/donaciones');
+
 // Usa el puerto del .env, o el 3001 por defecto
 const PORT = process.env.PORT || 3001;
 
@@ -24,9 +27,16 @@ app.get('/health', (req, res) => {
     });
 });
 
-// Aquí agregaremos las rutas de Sequelize y la BD más adelante
+app.use('/', donacionesRoutes); // rutas para manejar donaciones
 
-// 3. Levantar el servidor
-app.listen(PORT, () => {
-    console.log(`✅ Microservicio de Donaciones escuchando en el puerto ${PORT}`);
-});
+// 3. Sincronización con la base de datos y arranque del servidor
+sequelize.sync({ force: false }) // force: false evita que se borren los datos en cada reinicio
+    .then(() => {
+        console.log('📦 Conexión a PostgreSQL establecida y modelos sincronizados.');
+        app.listen(PORT, () => {
+            console.log(`✅ Microservicio de Donaciones escuchando en el puerto ${PORT}`);
+        });
+    })
+    .catch(err => {
+        console.error('❌ Error al conectar con PostgreSQL:', err);
+    });
