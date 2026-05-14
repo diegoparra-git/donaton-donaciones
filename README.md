@@ -17,7 +17,6 @@ El diseño de este microservicio implementa estándares de la industria para ase
 * **Base de Datos:** PostgreSQL (Neon Serverless Postgres)
 * **ORM:** Sequelize
 * **Seguridad:** Helmet, CORS
-* **Testing:** Jest, Supertest
 
 ## Rutas del Microservicio (API Interna)
 | Método | Ruta | Descripción |
