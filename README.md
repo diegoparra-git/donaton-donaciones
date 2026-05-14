@@ -48,3 +48,9 @@ El diseño de este microservicio implementa estándares de la industria para ase
     ```bash
     npm install
     npm run dev
+
+## Repositorios relacionados
+- [Api Gateway de Donaton](https://github.com/DamagedGhost/donaton-api)
+- [Microservicio de Donaciones](https://github.com/diegoparra-git/donaton-donaciones)
+- [Microservicio de Logistica](https://github.com/StevenQR21/donaton-logistica)
+- [Microservicio de Terreno](https://github.com/DamagedGhost/donaton-terreno)
