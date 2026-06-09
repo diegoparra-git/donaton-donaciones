@@ -10,6 +10,7 @@ const donacionesRoutes = require('./routes/donaciones');
 
 // Usa el puerto del .env, o el 3001 por defecto
 const PORT = process.env.PORT || 3001;
+const DB_URL = process.env.DB_URL || process.env.MONGODB_URI;
 
 // 1. Middlewares de Programación Defensiva
 app.use(helmet());
