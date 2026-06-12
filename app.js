@@ -33,11 +33,13 @@ app.use('/', donacionesRoutes); // rutas para manejar donaciones
 // 3. Sincronización con la base de datos y arranque del servidor
 sequelize.sync({ force: false }) // force: false evita que se borren los datos en cada reinicio
     .then(() => {
-        console.log('📦 Conexión a PostgreSQL establecida y modelos sincronizados.');
+        console.log('Conexión a PostgreSQL establecida y modelos sincronizados.');
         app.listen(PORT, () => {
-            console.log(`✅ Microservicio de Donaciones escuchando en el puerto ${PORT}`);
+            console.log(`Microservicio de Donaciones escuchando en el puerto ${PORT}`);
         });
     })
     .catch(err => {
-        console.error('❌ Error al conectar con PostgreSQL:', err);
+        console.error('Error al conectar con PostgreSQL:', err);
     });
+
+module.exports = app;
