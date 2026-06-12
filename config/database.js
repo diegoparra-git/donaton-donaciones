@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 // Instanciamos Sequelize pasándole directamente la URL completa de Neon
-const sequelize = new Sequelize(process.env.DB_URL, {
+const sequelize = new Sequelize(process.env.DB_URL || 'postgres://test:test@localhost:5432/test', {
     dialect: 'postgres',
     logging: false, // Apaga los logs de SQL en la terminal
     dialectOptions: {
